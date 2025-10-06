@@ -23,12 +23,16 @@ public class Post {
     @Column(name = "likescount")
     private Long likesCount = 0L;
 
-    public Post(Long id, Usuario autor, String conteudo, LocalDateTime createdAt, Long likesCount) {
+    @Column(name = "commentariesCount")
+    private Long commentariesCount = 0L;
+
+    public Post(Long id, Usuario autor, String conteudo, LocalDateTime createdAt, Long likesCount, Long commentariesCount ) {
         this.id = id;
         this.autor = autor;
         this.conteudo = conteudo;
         this.createdAt = createdAt;
         this.likesCount = likesCount;
+        this.commentariesCount = commentariesCount;
     }
 
     public Post(){
@@ -75,5 +79,11 @@ public class Post {
         this.likesCount = likesCount;
     }
 
+    public Long getCommentariesCount() {
+        return commentariesCount;
+    }
 
+    public void setCommentariesCount(Long commentariesCount) {
+        this.commentariesCount = commentariesCount;
+    }
 }

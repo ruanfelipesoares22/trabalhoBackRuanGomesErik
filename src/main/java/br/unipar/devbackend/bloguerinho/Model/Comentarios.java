@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Curtidas {
-
+public class Comentarios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // vai gerar automático o id (problema do banco de dados)
     private Long id;
+
+    @Column(name = "Comentario")
+    private String comentario;
 
     @ManyToOne
     @JoinColumn(name = "postID")
@@ -22,38 +24,48 @@ public class Curtidas {
     @Column(name = "CreatedAt")
     private LocalDateTime CreatedAt ;
 
-    public Curtidas(Long id, Post post, Usuario usuario, LocalDateTime createdAt) {
+    public Comentarios(Long id, String comentario, Post post, Usuario usuario, LocalDateTime createdAt) {
         this.id = id;
+        this.comentario = comentario;
         this.post = post;
         this.usuario = usuario;
         CreatedAt = createdAt;
     }
 
-    public Curtidas(Post post, Usuario usuario) {
+    public Comentarios(Post post, Usuario usuario) {
         this.post = post;
         this.usuario = usuario;
         this.CreatedAt = LocalDateTime.now();
     }
-    public Curtidas() {};
+
+    public Comentarios(){};
 
     public Long getId() {
         return id;
+    }
+
+    public String getComentario() {
+        return comentario;
     }
 
     public Post getPost() {
         return post;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return CreatedAt;
-    }
-
     public Usuario getUsuario() {
         return usuario;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return CreatedAt;
+    }
+
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     public void setPost(Post post) {
