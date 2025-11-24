@@ -26,11 +26,12 @@ public class SecurityConfig {
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/api/Categorias/**").hasAuthority("SUPER")
-                        .requestMatchers("/api/usuarios/**").permitAll()
-                        .requestMatchers("/api/futebol/**").hasAuthority("COMUM")
-                        .requestMatchers("/api/filmes/**").hasAuthority("SUPER")
+                        .requestMatchers("/api/usuarios/**").hasAuthority("SUPER")
+                        .requestMatchers("/api/futebol/**").permitAll()
+                        .requestMatchers("/api/filmes/**").permitAll()
                         .requestMatchers("/api/posts/**").hasAuthority("COMUM")
                         .requestMatchers("/api/curtidas/**").hasAuthority("COMUM")
                         .requestMatchers("/api/comentarios/**").hasAuthority("COMUM")
