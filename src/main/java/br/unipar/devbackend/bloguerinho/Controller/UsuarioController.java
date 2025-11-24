@@ -34,14 +34,14 @@ public class UsuarioController {
     )
 
     @GetMapping("/buscar-por-nome")
-    public List<Usuario> findByNome(
+    public Usuario findByNome(
             @Parameter(
                     description = "Nome do usuário que será buscado",
                     example = "Ruan"
             )
             @RequestParam String nome) {
 
-        return usuarioService.findByNome(nome);
+        return usuarioService.findByUsername(nome);
     }
     @Operation(
             summary = "Gravar novo usuario",

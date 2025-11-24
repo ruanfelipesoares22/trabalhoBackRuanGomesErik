@@ -11,7 +11,6 @@ import java.util.List;
 public class UsuarioService {
     private final UsuariosRepository repository;
 
-
     public UsuarioService(UsuariosRepository repository) {
         this.repository = repository;
     }
@@ -24,8 +23,9 @@ public class UsuarioService {
         return repository.findAll();
     }
 
-    public List<Usuario> findByNome(String nome) {
-        return repository.findByNomeContainingIgnoreCase(nome);
+    public Usuario findByUsername(String username) {
+        return repository.findByUsernameIgnoreCase(username)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }
 
     public Usuario editar(Usuario usuario) {
@@ -35,6 +35,5 @@ public class UsuarioService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
-
-
 }
+
