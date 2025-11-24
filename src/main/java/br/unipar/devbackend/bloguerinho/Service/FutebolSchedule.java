@@ -15,8 +15,6 @@ public class FutebolSchedule {
         System.out.println("Iniciando atualização de times de futebol...");
         try {
             Object times = futebolService.buscarTimesBrasil();
-            System.out.println("Dados obtidos: " + times);
-            // Aqui você pode salvar os dados no banco, se desejar
         } catch (Exception e) {
             System.err.println("Erro ao atualizar times de futebol: " + e.getMessage());
         }

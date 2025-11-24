@@ -21,8 +21,4 @@ public class CategoriasService {
     public List<Categorias> findAll() {
         return repository.findAll();
     }
-
-    public void delete(Long id) {
-        repository.deleteById(id);
-    }
 }

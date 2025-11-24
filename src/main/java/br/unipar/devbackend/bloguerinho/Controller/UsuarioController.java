@@ -43,20 +43,6 @@ public class UsuarioController {
 
         return usuarioService.findByUsername(nome);
     }
-    @Operation(
-            summary = "Gravar novo usuario",
-            description = "Grava novo usuario no  bloguinho."
-    )
-    @PostMapping // mapeamento do metodo HTTP (POST)
-    public ResponseEntity<Usuario> gravar(
-            @Parameter(
-                    description = "Informaceos do novo usuario",
-                    example = "1"
-            )
-            @RequestBody Usuario usuario) {
-        Usuario usuarioNovo = usuarioService.gravar(usuario);
-        return ResponseEntity.ok(usuarioNovo);
-    }
 
     @Operation(
             summary = "Atualizar usuario",
